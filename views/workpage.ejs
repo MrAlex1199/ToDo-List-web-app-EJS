@@ -1,0 +1,41 @@
+<%- include("partials/header.ejs") %>
+
+<body>
+    <div class="A1">
+       <div class="A2">
+
+            <div class="A3"><h1 class="A3-1">Work list</h1></div>
+            
+            <!--today-work-botton-->
+            <%- include("partials/botton1.ejs") %>
+
+            <!--main-content-today-work-->
+            <div id="myList" class="A5 ">
+                <% listWorkTodo.forEach(function(item, index) { %>
+                    <div class="A5X">
+                        <input type="checkbox" name="Checkbox2" style="display: none;" id="taskCheckbox<%= index %>" onclick="toggleStrikeThrough2(this)">
+                        <label for="taskCheckbox<%= index %>"><%= item %></label>
+                    </div>
+                <% }); %>
+                </div>
+            <!--add-list-botton-->
+            <form class="botton-add" action="/submit2" method="POST">
+                <input id="todo" class="A5XA1" type="text" name="TodayDaylsit2" placeholder="Enter item text">
+                <input id="addToDo" action="/submit2" method="POST" class="A6 button-1" type="submit" value="Add Item">
+            </form>
+       </div>
+    </div>
+    <!--footer-->
+    <%- include("partials/footer.ejs") %>
+</body>
+<script>
+    function toggleStrikeThrough2(checkbox) {
+        const label = checkbox.nextElementSibling; // Get the label next to the checkbox
+        if (checkbox.checked) {
+            label.style.textDecoration = "line-through";
+        } else {
+            label.style.textDecoration = "none";
+        }
+    }
+</script>
+</html>
